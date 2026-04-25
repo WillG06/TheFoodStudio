@@ -52,7 +52,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.PROD ? "/TheFoodStudio" : "/"}>
         <ScrollToTop />
         <AnimatedRoutes />
       </BrowserRouter>
