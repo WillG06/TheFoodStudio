@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* The Food Studio — editorial design system, dark mode by default.
+   Indian palette: deep maroon, saffron, charcoal ink, warm bone for type.
+   All HSL only. */
+
+@layer base {
+  :root {
+    /* Dark mode is the default. */
+    --background: 20 22% 6%;           /* near-black charcoal */
+    --foreground: 36 22% 92%;          /* warm bone */
+
+    --paper: 20 18% 10%;               /* slightly lighter dark surface */
+    --ink: 36 22% 96%;                 /* near-white for type emphasis */
+
+    --card: 20 22% 6%;
+    --card-foreground: 36 22% 92%;
+
+    --popover: 20 22% 8%;
+    --popover-foreground: 36 22% 92%;
+
+    --primary: 36 22% 92%;             /* light type on dark */
+    --primary-foreground: 20 22% 6%;
+
+    --secondary: 16 45% 32%;           /* deep brick */
+    --secondary-foreground: 36 22% 92%;
+
+    --muted: 20 18% 14%;
+    --muted-foreground: 30 12% 70%;
+
+    --accent: 12 70% 45%;              /* lit maroon / sindoor */
+    --accent-foreground: 36 22% 96%;
+
+    --tan: 28 65% 62%;                 /* warm saffron tan */
+    --saffron: 32 85% 55%;             /* saffron */
+    --maroon: 358 60% 28%;             /* dark wine maroon */
+    --brass: 36 60% 52%;               /* brass */
+    --denim: 215 16% 50%;
+    --graphite: 30 8% 62%;             /* mid grey on dark — readable secondary */
+    --umber: 14 70% 50%;               /* warm burnt umber on dark */
+    --ebony: 36 22% 96%;               /* near-white — used as primary text */
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 36 22% 96%;
+
+    --border: 20 14% 18%;
+    --input: 20 14% 18%;
+    --ring: 12 70% 45%;
+
+    --radius: 0;
+
+    --sidebar-background: 20 22% 8%;
+    --sidebar-foreground: 36 18% 82%;
+    --sidebar-primary: 36 22% 96%;
+    --sidebar-primary-foreground: 20 22% 6%;
+    --sidebar-accent: 20 18% 14%;
+    --sidebar-accent-foreground: 36 22% 92%;
+    --sidebar-border: 20 14% 18%;
+    --sidebar-ring: 12 70% 45%;
+  }
+
+  /* .dark kept as alias of root so existing wrappers don't break */
+  .dark {
+    --background: 20 22% 6%;
+    --foreground: 36 22% 92%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "ss01", "ss02", "liga", "kern";
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  ::selection {
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Fraunces', 'Times New Roman', serif;
+    font-feature-settings: "ss01", "ss02", "dlig";
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+
+  .font-sans-tight {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  .tracking-display { letter-spacing: -0.04em; }
+  .tracking-eyebrow { letter-spacing: 0.28em; }
+
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.08;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .editorial-rule {
+    background: linear-gradient(to right, hsl(var(--ink) / 0.4), hsl(var(--ink) / 0));
+  }
+
+  .bg-spice-gradient {
+    background: linear-gradient(135deg, hsl(var(--maroon)) 0%, hsl(var(--background)) 60%, hsl(var(--background)) 100%);
+  }
+}
